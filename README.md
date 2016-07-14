@@ -2,7 +2,6 @@ swfit3.0之UILable,UIButton,UITableView的简单使用
 
 
 UILable
-
 //位置和大小
 let lable = UILabel(frame: CGRectMake(20, 280, 280, 80));
 //设置要显示的文字
@@ -25,7 +24,7 @@ lable.backgroundColor=UIColor.blackColor();
 self.view.addSubview(lable);
 
 UIButton
-
+//UIButton
 let button = UIButton(type:UIButtonType.RoundedRect);
 //设置按钮的位置和大小
 button.frame=CGRectMake(20, 120, 100, 150);
@@ -42,23 +41,7 @@ button.tag=10;
 //加到视图上
 self.view.addSubview(button);
 
-//触发button点击事件
-func buttonTag(btn:UIButton) {
-if btn.tag==10{
-//触发此事件，进入tableView
-let tableView = ManTableViewController()
-self.navigationController?.pushViewController(tableView, animated:true);
-
-}else{
-//通过tag获取lable
-let lable = (self.view .viewWithTag(12)) as! UILabel
-lable.text=”我点了button1″;
-
-}
-}
-
 UITableView
-
 class ManTableViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
 override func viewDidLoad() {
@@ -75,10 +58,12 @@ let tableView = UITableView(frame: CGRectMake(0, 0, screenWidth, screenHeight), 
 //实现协议
 tableView.dataSource=self;
 tableView.delegate=self;
+
 //加载视图
 self.view .addSubview(tableView);
 
 }
+
 // MARK: – 几章节）
 func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 return 1
@@ -102,8 +87,5 @@ return cell!
 
 // MARK: – UITableViewDelegate点击
 func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
 print(indexPath.row);
-
 }
-
